@@ -4,6 +4,16 @@ services:
     build: ./nginx
     ports:
       - "80:80"
+    links:
+      -php8
+    volumes:
+      - /Users/heyjun/desktop/m-memo:delegated
+      - ./www:/var/www/html
+    depends_on:
+      - php8
+    php8:
+      build: ./php8
+
   #   volumes:
   #     - ./nginx/site.conf:/etc/nginx/conf.d/default.conf:cached
   #     - ./html:/var/www/html:cached
