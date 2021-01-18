@@ -4,15 +4,20 @@ services:
     build: ./nginx
     ports:
       - "80:80"
-    links:
-      -php8
+    # links:
+    #   -php8
     volumes:
-      - /Users/heyjun/desktop/m-memo:delegated
+      - ./Users/heyjun/desktop/m-memo/infra
       - ./www:/var/www/html
-    depends_on:
-      - php8
-    php8:
-      build: ./php8
+    # depends_on:
+    #   - php8
+
+    # php8:
+    #   build: ./php8
+    #   volumes:
+    #     - /Users/heyjun/desktop/m-memo:delegated
+        # depends_on:
+          # - db
 
   #   volumes:
   #     - ./nginx/site.conf:/etc/nginx/conf.d/default.conf:cached
