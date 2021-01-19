@@ -11,13 +11,13 @@ services:
         # - ./infra/www/html:/var/www/html
 
     php:
-      build: ./php
+      build: ./infra/php
       volumes:
     #   # htmlとホストのhtmlを同期
           - ./www/html:/var/www/html
 
     db:
-      build: ./mysql
+      build: ./infra/mysql
       ports:
         - 13306:3306
     #     # ホストのmysqlとdataを同期
