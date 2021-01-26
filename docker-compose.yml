@@ -8,31 +8,25 @@ services:
         # ホストのdefault.confを同期
         - ./infra/nginx/default.conf:/etc/nginx/conf.d/default.conf
         # htmlとホストのhtmlを同期
-        # - ./infra/www/html:/var/www/html
+        - ./www/html:/var/www/html
 
     php:
       build: ./infra/php
       volumes:
-    #   # htmlとホストのhtmlを同期
+       # htmlとホストのhtmlを同期
           - ./www/html:/var/www/html
 
     db:
       build: ./infra/mysql
       ports:
         - 13306:3306
-    #     # ホストのmysqlとdataを同期
+         # ホストのmysqlとdataを同期
       volumes:
         - ./mysql/mysql:/var/lib/mysql
       environment:
         # 必要なパス
         MYSQL_ROOT_PASSWORD: secret
 
-    # phpmyadmin:
-    #     image: phpmyadmin/phpmyadmin:latest
-    #     ports:
-    #         - 8888:80
-    #     depends_on:
-    #         - db
 
 
 
