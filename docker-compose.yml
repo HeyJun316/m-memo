@@ -11,6 +11,7 @@ services:
         - ./www/html:/var/www/html
 
     php:
+      tty: true
       build: ./infra/php
       volumes:
        # htmlとホストのhtmlを同期
@@ -22,10 +23,7 @@ services:
         - 13306:3306
          # ホストのmysqlとdataを同期
       volumes:
-        - ./mysql/mysql:/var/lib/mysql
-      environment:
-        # 必要なパス
-        MYSQL_ROOT_PASSWORD: secret
+        - ./mysql:/var/lib/mysql
 
 
 
